@@ -1,41 +1,132 @@
-
 ---
 export async function getStaticPaths() {
     return [
-      { params: { toolName: "v0" } },
-      { params: { toolName: "locofy" } },
-      { params: { toolName: "tabnine" } },
-      { params: { toolName: "replit" } },
-      { params: { toolName: "pecan" } },
-      { params: { toolName: "chatgpt" } },
+      { params: { toolName: "v0" }, 
+        props: { 
+          name: "V0", 
+          description: "AI code editor.", 
+          image: "/images/v0.png",
+          video: null,
+          youtubeId: "dQw4w9WgXcQ",
+          pricingImage: "/pricing/v0.png"
+        }
+      },
+      { params: { toolName: "locofy" }, 
+        props: { 
+          name: "Locofy", 
+          description: "AI-powered design to code converter.", 
+          image: "/images/locofy.png",
+          video: "/videos/locofy.mp4",
+          youtubeId: null,
+          pricingImage: "/pricing/locofy.png"
+        }
+      },
+      { params: { toolName: "tabnine" }, 
+        props: { 
+          name: "Tabnine", 
+          description: "AI coding assistant.", 
+          image: "/images/tabnine.png",
+          video: null,
+          youtubeId: null,
+          pricingImage: "/pricing/tabnine.png"
+        }
+      },
+      { params: { toolName: "replit" }, 
+        props: { 
+          name: "Replit", 
+          description: "Cloud development environment with AI features.", 
+          image: "/images/replit.png",
+          video: null,
+          youtubeId: null,
+          pricingImage: "/pricing/replit.png"
+        }
+      },
+      { params: { toolName: "qodo" }, 
+        props: { 
+          name: "Qodo", 
+          description: "AI-powered development tool.", 
+          image: "/images/qodo.png",
+          video: null,
+          youtubeId: null,
+          pricingImage: "/pricing/qodo.png"
+        }
+      },
+      { params: { toolName: "cursor" }, 
+        props: { 
+          name: "Cursor", 
+          description: "AI-powered chatbot.", 
+          image: "/images/cursor.png",
+          video: null,
+          youtubeId: null,
+          pricingImage: "/pricing/cursor.png"
+        }
+      },
     ];
-  }
-  
-  const toolDetails:any = {
-    pecan: { name: "Pecan", description: "AI-powered development tool.", image: "/images/pecan.png" },
-    locofy: { name: "Locofy", description: "AI-powered design to code converter.", image: "/images/locofy.png" },
-    tabnine: { name: "Tabnine", description: "AI coding assistant.", image: "/images/tabnine.png" },
-    replit: { name: "Replit", description: "Cloud development environment with AI features.", image: "/images/replit.png" },
-    "v0": { name: "V0", description: "AI code editor.", image: "/images/v0.png" },
-    chatgpt: { name: "ChatGPT", description: "AI-powered chatbot.", image: "/images/gpt.png" },
-  };
+}
 
 const { toolName } = Astro.params;
-const tool = toolDetails[toolName];
-if (!tool) {
-  throw new Error(`Tool not found: ${toolName}`);
-}
+const { name, description, image, video, youtubeId, pricingImage } = Astro.props;
 ---
+
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>{tool.name} - Details</title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{name} - Details</title>
   </head>
-  <body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-600 flex items-center justify-center min-h-screen text-white antialiased">
-    <div class="text-center">
-      <img src={tool.image} alt={tool.name} class="w-40 h-40 rounded-full mx-auto " />
-      <h1 class="text-2xl font-bold mt-4">{tool.name}</h1>
-      <p class="text-lg mt-2">{tool.description}</p>
-      <a href="/" class="mt-4 inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">Back to Home</a>
+  <body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-600 min-h-screen text-white">
+    <div class="container mx-auto px-4 py-8">
+      <div class="text-center max-w-4xl mx-auto">
+        <img src={image} alt={name} class="w-40 h-40 rounded-full mx-auto" />
+        <h1 class="text-2xl font-bold mt-4">{name}</h1>
+        <p class="text-lg mt-2">{description}</p>
+        
+        {video && (
+          <div class="mt-8">
+            <video 
+              controls
+              muted
+              class="rounded-lg w-full"
+              height="500px"
+            >
+              <source src={video} type="video/mp4"/>
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        )}
+
+        {youtubeId && (
+          <div class="mt-8 aspect-w-16 aspect-h-9">
+            <iframe
+              class="w-full rounded-lg"
+              height="500px"
+              src={`https://www.youtube.com/embed/${youtubeId}`}
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        )}
+
+        {pricingImage && (
+          <div class="mt-8">
+            <h2 class="text-2xl font-bold mb-4">Pricing</h2>
+            <img 
+              src={pricingImage} 
+              alt={`${name} Pricing`} 
+              class="rounded-lg w-full shadow-lg"
+            />
+          </div>
+        )}
+        
+        <a href="/" class="mt-8 inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
+          Back to Home
+        </a>
+      </div>
     </div>
   </body>
 </html>

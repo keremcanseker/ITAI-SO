@@ -3,12 +3,12 @@ import ToolCard from "../components/ToolCard.astro";
 import "../global.css";
 
 const tools = [
-  { name: "Pecan", image: "/images/pecan.png", link: "/tools/pecan" },
   { name: "Locofy", image: "/images/locofy.png", link: "/tools/locofy" },
+  { name: "Qodo", image: "/images/qodo.png", link: "/tools/qodo" },
   { name: "Tabnine", image: "/images/tabnine.png", link: "/tools/tabnine" },
   { name: "Replit", image: "/images/replit.png", link: "/tools/replit" },
   { name: "V0", image: "/images/v0.png", link: "/tools/v0" },
-  {name: 'ChatGPT', image: '/images/gpt.png', link: '/tools/chatgpt'}
+  {name: 'Cursor', image: '/images/cursor.png', link: '/tools/cursor'}
 ];
 ---
 <html lang="en">
@@ -22,13 +22,47 @@ const tools = [
     </header>
     
     <main class="flex flex-col items-center justify-center flex-grow">
-      <h1 class="text-4xl font-bold mb-2">AI Coding Tools</h1>
-      <div class="grid grid-cols-3 gap-8">
+    <div class="flex flex-col items-center justify-center flex-grow">
+      <h1 class="text-4xl font-bold mb-8">AI Coding Tools</h1>
+      <div class="grid grid-cols-3 gap-8 mb-8">
         {tools.map((tool) => (
           <ToolCard {...tool} />
         ))}
       </div>
-     
+    </div>
+
+    <div class="grid grid-cols-3 gap-8 mb-8 w-full max-w-[1600px] h-screen items-center justify-start">
+      <div class="flex flex-col items-center text-center justify-start">
+        <h1 class="text-2xl font-bold mb-8">Advantages of Generative AI Tools</h1>
+        <ul class="space-y-4 mb-8">
+          <li><span class="font-bold">Speed and Efficiency</span></li>
+          <li><span class="font-bold">Code Quality</span></li>
+          <li><span class="font-bold">Educational Support</span></li>
+          <li><span class="font-bold">Documentation Assistance</span></li>
+        </ul>
+      </div>
+
+      <div class="flex flex-col items-center text-center justify-start">
+        <h1 class="text-2xl font-bold mb-8">Technical Features and Use Cases</h1>
+        <ul class="space-y-4 mb-8">
+          <li><span class="font-bold">Code Completion</span></li>
+          <li><span class="font-bold">Debugging</span></li>
+          <li><span class="font-bold">Prototyping</span></li>
+          <li><span class="font-bold">Code Explanations</span></li>
+          <li><span class="font-bold">Refactoring</span></li>
+        </ul>
+      </div>
+
+      <div class="flex flex-col items-center text-center justify-start">
+        <h1 class="text-2xl font-bold mb-8">Limitations of Generative AI</h1>
+        <ul class="space-y-4 mb-8">
+          <li><span class="font-bold ">Code Errors</span></li>
+          <li><span class="font-bold">Dependency Risk</span></li>
+          <li><span class="font-bold">Security Concerns</span></li>
+          <li><span class="font-bold">Limited Domain Knowledge</span></li>
+        </ul>
+      </div>
+    </div>
     </main>
   </body>
 </html>
