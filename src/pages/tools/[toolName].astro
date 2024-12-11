@@ -7,6 +7,7 @@ export async function getStaticPaths() {
       { params: { toolName: "tabnine" } },
       { params: { toolName: "replit" } },
       { params: { toolName: "pecan" } },
+      { params: { toolName: "chatgpt" } },
     ];
   }
   
@@ -16,6 +17,7 @@ export async function getStaticPaths() {
     tabnine: { name: "Tabnine", description: "AI coding assistant.", image: "/images/tabnine.png" },
     replit: { name: "Replit", description: "Cloud development environment with AI features.", image: "/images/replit.png" },
     "v0": { name: "V0", description: "AI code editor.", image: "/images/v0.png" },
+    chatgpt: { name: "ChatGPT", description: "AI-powered chatbot.", image: "/images/gpt.png" },
   };
 
 const { toolName } = Astro.params;
