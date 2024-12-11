@@ -14,13 +14,20 @@ const tools = [
   <head>
     <title>AI Coding Tools</title>
   </head>
-  <body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-600 flex items-center flex-col justify-center min-h-screen antialiased text-white">
-    <h1 class="absolute top-0 w-full text-center text-4xl font-bold py-4">ESKO KESE</h1>
-    <h1 class="text-4xl font-bold mb-2">AI Coding Tools</h1>
-    <main class="grid grid-cols-3 gap-8">
-      {tools.map((tool) => (
-        <ToolCard {...tool} />
-      ))}
+  <body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-600 flex flex-col min-h-screen antialiased text-white">
+    <header class="sticky top-2 w-full h-14  flex items-center justify-left py-4">
+      <!-- <h1 class="text-4xl font-bold">ESKO KESE</h1> -->
+      <img src="images/logo2.png" alt="Logo" class=" w-36 h-36 " />
+    </header>
+    
+    <main class="flex flex-col items-center justify-center flex-grow">
+      <h1 class="text-4xl font-bold mb-2">AI Coding Tools</h1>
+      <div class="grid grid-cols-3 gap-8">
+        {tools.map((tool) => (
+          <ToolCard {...tool} />
+        ))}
+      </div>
+     
     </main>
   </body>
 </html>
