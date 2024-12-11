@@ -1,4 +1,6 @@
 ---
+import "../../global.css";
+
 export async function getStaticPaths() {
     return [
       { params: { toolName: "v0" }, 
@@ -46,8 +48,9 @@ export async function getStaticPaths() {
           name: "Qodo", 
           description: "AI-powered development tool.", 
           image: "/images/qodo.png",
+          additionalImage: "/additional/qodo.png",
           video: null,
-          youtubeId: null,
+          youtubeId: "KwGdcBnD45o",
           pricingImage: "/pricing/qodo.png"
         }
       },
@@ -65,7 +68,7 @@ export async function getStaticPaths() {
 }
 
 const { toolName } = Astro.params;
-const { name, description, image, video, youtubeId, pricingImage } = Astro.props;
+const { name, description, image, additionalImage, video, youtubeId, pricingImage } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -84,6 +87,16 @@ const { name, description, image, video, youtubeId, pricingImage } = Astro.props
         <h1 class="text-2xl font-bold mt-4">{name}</h1>
         <p class="text-lg mt-2">{description}</p>
         
+        {additionalImage && (
+          <div class="mt-8">
+            <img 
+              src={additionalImage} 
+              alt={`${name} Additional`} 
+              class="rounded-lg w-full shadow-lg"
+            />
+          </div>
+        )}
+
         {video && (
           <div class="mt-8">
             <video 
