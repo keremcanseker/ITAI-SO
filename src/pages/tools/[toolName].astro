@@ -1,0 +1,39 @@
+
+---
+export async function getStaticPaths() {
+    return [
+      { params: { toolName: "v0" } },
+      { params: { toolName: "locofy" } },
+      { params: { toolName: "tabnine" } },
+      { params: { toolName: "replit" } },
+      { params: { toolName: "pecan" } },
+    ];
+  }
+  
+  const toolDetails:any = {
+    pecan: { name: "Pecan", description: "AI-powered development tool.", image: "/images/pecan.png" },
+    locofy: { name: "Locofy", description: "AI-powered design to code converter.", image: "/images/locofy.png" },
+    tabnine: { name: "Tabnine", description: "AI coding assistant.", image: "/images/tabnine.png" },
+    replit: { name: "Replit", description: "Cloud development environment with AI features.", image: "/images/replit.png" },
+    "v0": { name: "V0", description: "AI code editor.", image: "/images/v0.png" },
+  };
+
+const { toolName } = Astro.params;
+const tool = toolDetails[toolName];
+if (!tool) {
+  throw new Error(`Tool not found: ${toolName}`);
+}
+---
+<html lang="en">
+  <head>
+    <title>{tool.name} - Details</title>
+  </head>
+  <body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-600 flex items-center justify-center min-h-screen text-white antialiased">
+    <div class="text-center">
+      <img src={tool.image} alt={tool.name} class="w-40 h-40 rounded-full mx-auto " />
+      <h1 class="text-2xl font-bold mt-4">{tool.name}</h1>
+      <p class="text-lg mt-2">{tool.description}</p>
+      <a href="/" class="mt-4 inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">Back to Home</a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+---
+const { name, image, link } = Astro.props;
+---
+
+<a href={link} class="flex flex-col items-center space-y-2 hover:scale-105 transition">
+    <img src={image} alt={name} class="w-48 h-48 rounded-full border-2 border-gray-800 shadow-md" />
+    <p class="text-lg font-semibold">{name}</p>
+</a>
+
